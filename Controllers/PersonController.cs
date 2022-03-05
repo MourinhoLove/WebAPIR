@@ -1,7 +1,5 @@
 // 一个Person控制器。对本地数据库person表的数据进行CRUD
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
 namespace WebAPIR.Controllers;
 [ApiController]
 [Route("api/[controller]")]
@@ -17,8 +15,6 @@ public class PersonController : ControllerBase
     [HttpPost("create")]
     public ActionResult createPersion([FromBody] User value)
     {
-        var message = "";
-
         using (_dbContext)
         {
             var user = new User
@@ -29,9 +25,8 @@ public class PersonController : ControllerBase
             };
             _dbContext.Person.Add(user);
             var i = _dbContext.SaveChanges();
-            message = i > 0 ? "成功" : "失败";
+            return Ok("新增成功");
         }
-        return Ok("新增成功");
     }
 
     // 获取数据库下面的所有person
@@ -40,7 +35,7 @@ public class PersonController : ControllerBase
     {
         using (_dbContext)
         {
-            var list = _dbContext.Person.ToList();
+            var list = _dbContext.Person.AsNoTracking().ToList();
             if (!list.Any())
             {
                 return NotFound();
@@ -52,5 +47,28 @@ public class PersonController : ControllerBase
 
         }
     }
+
+    // 通过id 删除数据
+    [HttpPost("deleteById")]
+    public ActionResult deletPerson(int id)
+    {
+        using (_dbContext)
+        {
+            var obj = _dbContext.Person.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _dbContext.Person.Remove(obj);
+                _dbContext.SaveChanges();
+                return Ok("成功啦");
+            }
+
+        }
+    }
+
+
 }
 
