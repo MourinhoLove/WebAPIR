@@ -31,7 +31,7 @@ public class PersonController : ControllerBase
             var i = _dbContext.SaveChanges();
             message = i > 0 ? "成功" : "失败";
         }
-        return Created(message, User);
+        return Ok("新增成功");
     }
 
     // 获取数据库下面的所有person
@@ -47,7 +47,7 @@ public class PersonController : ControllerBase
             }
             else
             {
-                return Ok(list); 
+                return Ok(list);
             }
 
         }
