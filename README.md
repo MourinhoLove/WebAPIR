@@ -2,7 +2,7 @@
  * @Author: Zhangqilei
  * @Date: 2022-03-04 21:22:32
  * @LastEditors: Zhangqilei
- * @LastEditTime: 2022-03-07 16:58:13
+ * @LastEditTime: 2022-03-07 16:59:22
  * @Description: 
  * 
 -->
@@ -39,6 +39,7 @@ EntityFrameworkCore提供了对SQL serve的原生支持,亲儿子就是不一样
 然而当你用MySql 或者PostgreSQL之类的,你需要安装EntityFrameworkCore提供了对SQL,还得安装对应数据库的插件比如说
 
 Mysql:Pomelo.EntityFrameworkCore.MySql
+
 PostgreSQL: Npgsql.EntityFrameworkCore.PostgreSQL 
 
 下面提供一下安装EntityFrameworkCore的方法
