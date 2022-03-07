@@ -17,6 +17,9 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseMySql(connectionString, MySqlServerVersion.LatestSupportedServerVersion);
 });
 var app = builder.Build();
+/*
+这里配置了跨域
+*/
 builder.Services.AddCors();
 app.UseCors(x => x
                .AllowAnyMethod()

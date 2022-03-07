@@ -50,11 +50,11 @@ public class PersonController : ControllerBase
 
     // 通过id 删除数据
     [HttpPost("deleteById")]
-    public ActionResult deletPerson(int id)
+    public ActionResult deletPerson([FromBody] User value)
     {
         using (_dbContext)
         {
-            var obj = _dbContext.Person.Find(id);
+            var obj = _dbContext.Person.Find(value.id);
             if (obj == null)
             {
                 return NotFound();
@@ -69,6 +69,27 @@ public class PersonController : ControllerBase
         }
     }
 
+    // 更新Person
+    [HttpPost("update")]
+    public ActionResult updateUser([FromBody] User value)
+    {
+        using (_dbContext)
+        {
+            var obj = _dbContext.Person.Find(value.id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                obj.name = value.name;
+                obj.age = value.age;
+                obj.address = value.address;
+                _dbContext.SaveChanges();
+                return Ok("成功啦");
+            }
+        }
+    }
 
 }
 
