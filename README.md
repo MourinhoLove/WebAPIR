@@ -2,7 +2,7 @@
  * @Author: Zhangqilei
  * @Date: 2022-03-04 21:22:32
  * @LastEditors: Zhangqilei
- * @LastEditTime: 2022-03-07 16:51:33
+ * @LastEditTime: 2022-03-07 16:53:53
  * @Description: 
  * 
 -->
@@ -18,18 +18,20 @@
 就可以看到API文档,安装数据库后,然后你可以用Postman测试啦
 
 3. 项目结构
- - Program.cs
+ - **Program.cs**
  项目的入口.在里面我配置了连接数据库的方法和增加了跨域支持
 
- - appsettings.json
+ - **appsettings.json**
 这里配置了一个字符串 叫ConnectionStrings.这里字符串包含了本地mysql数据库的信息.包括连接地址,用户,数据库名称,密码.请根据自己的数据库进行配置
 
 - Models
-这里需要关注User和UserContext
-User:对应我表中数据的一个class.我表里有什么数据这里就有什么数据,我提供一下我本地的数据库截图,可以参考一下
+这里需要关注**User**和**UserContext**
+
+
+**User**:对应我表中数据的一个class.我表里有什么数据这里就有什么数据,我提供一下我本地的数据库截图,可以参考一下
 ![](https://s2.loli.net/2022/03/07/J4RgEuDzHoc2keO.jpg)
 
-UserContext: 你需要为你的表的数据创建上下文.可以理解为NET Core 获取数据的中间件.具体的内容需要再研究.按照网上的写法.它让我得到了数据库的表的主体.当你有了这个,你就可以对数据库的表进行增删改查啦.
+**UserContext**: 你需要为你的表的数据创建上下文.可以理解为NET Core 获取数据的中间件.具体的内容需要再研究.按照网上的写法.它让我得到了数据库的表的主体.当你有了这个,你就可以对数据库的表进行增删改查啦.
 
 微软提供的连接数据库的库叫做EntityFrameworkCore,当你新建项目的时候它不在你的项目里.需要你手动添加/
 EntityFrameworkCore提供了对SQL serve的原生支持,亲儿子就是不一样.
@@ -45,12 +47,12 @@ PostgreSQL: Npgsql.EntityFrameworkCore.PostgreSQL
 把这三个安装以后你就有了操作数据库的基础.然后在安装根据对应的数据库插件就行了.
 安装的插件都在WebAPIR.cspro可以自行参考
 
-4. 单独讲一下Controller
+4. 单独讲一下**Controller**
 
 看了教程,微软的想法是Model里创建你需要的Model,Controller里面创建你需要的API.
 这就是MVC呀,这样就好理解了.每一个服务创建一个controller.
-本Demo的用到的控制器是PersonController.cs,里面有4个API分别对应CRUD.这几个接口写的比较简单,验证什么的也没加.,写法也是安装微软官方的教程来的.
 
+本Demo的用到的控制器是PersonController.cs,里面有4个API分别对应CRUD.这几个接口写的比较简单,验证什么的也没加.,写法也是安装微软官方的教程来的.
 
 但是.net core 创建API的方法真是简单明了,看代码
 `[HttpPost("create")]`就能读出来这是一个post的创建方法.
