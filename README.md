@@ -2,7 +2,7 @@
  * @Author: Zhangqilei
  * @Date: 2022-03-04 21:22:32
  * @LastEditors: Zhangqilei
- * @LastEditTime: 2022-03-07 16:53:53
+ * @LastEditTime: 2022-03-07 16:58:13
  * @Description: 
  * 
 -->
@@ -15,7 +15,7 @@
 编辑器我用的是VS Code.很奇怪我在VS上没办法run起来.但是在VS Code 却可以打断点调试
 
 2. 启动后浏览器打开 `https://localhost:7109/swagger/index.html`
-就可以看到API文档,安装数据库后,然后你可以用Postman测试啦
+就可以看到API文档,安装数据库后然后你可以用Postman测试啦
 
 3. 项目结构
  - **Program.cs**
@@ -33,10 +33,11 @@
 
 **UserContext**: 你需要为你的表的数据创建上下文.可以理解为NET Core 获取数据的中间件.具体的内容需要再研究.按照网上的写法.它让我得到了数据库的表的主体.当你有了这个,你就可以对数据库的表进行增删改查啦.
 
-微软提供的连接数据库的库叫做EntityFrameworkCore,当你新建项目的时候它不在你的项目里.需要你手动添加/
+> 微软提供的连接数据库的库叫做EntityFrameworkCore,当你新建项目的时候它不在你的项目里.需要你手动添加
 EntityFrameworkCore提供了对SQL serve的原生支持,亲儿子就是不一样.
 
 然而当你用MySql 或者PostgreSQL之类的,你需要安装EntityFrameworkCore提供了对SQL,还得安装对应数据库的插件比如说
+
 Mysql:Pomelo.EntityFrameworkCore.MySql
 PostgreSQL: Npgsql.EntityFrameworkCore.PostgreSQL 
 
@@ -45,7 +46,7 @@ PostgreSQL: Npgsql.EntityFrameworkCore.PostgreSQL
 `Install-Package Microsoft.EntityFrameworkCore.Design`
 `Install-Package Microsoft.EntityFrameworkCore.Tools`
 把这三个安装以后你就有了操作数据库的基础.然后在安装根据对应的数据库插件就行了.
-安装的插件都在WebAPIR.cspro可以自行参考
+安装的插件在WebAPIR.cspro有目录可以自行参考
 
 4. 单独讲一下**Controller**
 
